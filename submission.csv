@@ -109,7 +109,7 @@ test_0107,A
 test_0108,A
 test_0109,C
 test_0110,B
-test_0111,B
+test_0111,C
 test_0112,A
 test_0113,A
 test_0114,AB
@@ -505,7 +505,7 @@ test_0503,A
 test_0504,C
 test_0505,B
 test_0506,C
-test_0507,A
+test_0507,C
 test_0508,A
 test_0509,C
 test_0510,A
@@ -556,7 +556,7 @@ test_0554,D
 test_0555,C
 test_0556,C
 test_0557,B
-test_0558,C
+test_0558,A
 test_0559,B
 test_0560,C
 test_0561,D
