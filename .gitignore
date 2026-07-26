@@ -1,4 +1,4 @@
-# Heavy binaries and compressed archives
+# Heavy binaries, videos, and compressed datasets
 *.mp4
 *.m4v
 *.avi
@@ -24,41 +24,20 @@ temp_meta*/
 tpu_output*/
 video_features_resnet/
 timesformer_kaggle/
+submission_*leak*.csv
 
-# Deployment scripts and historical runners containing personal or Hugging Face tokens
+# Deployment scripts and historical downloaders containing GitHub PAT or HuggingFace tokens
 build_contribution_history.py
 publish_to_github.py
+publish_complete_archive.py
 force_git_push.py
+push_v277.py
+push_hotfix.py
 create_kaggle*.py
 download*.py
 test_hf*.py
 *secret*.py
 *token*.py
-
-# Older intermediate experimentation CSVs (Keep milestones v265+ and core predictions)
-submission_v1*.csv
-submission_v20*.csv
-submission_v21*.csv
-submission_v22*.csv
-submission_v23*.csv
-submission_v24*.csv
-submission_v25*.csv
-submission_v260*.csv
-submission_v261*.csv
-submission_v262*.csv
-submission_v263*.csv
-submission_v264*.csv
-submission_v3*.csv
-submission_v4*.csv
-submission_v5*.csv
-submission_v6*.csv
-submission_v7*.csv
-submission_v9*.csv
-submission_*leaks*.csv
-submission_*chimera*.csv
-submission_*ensemble*.csv
-submission_*probe*.csv
-submission_*forest*.csv
 
 # Python Cache & Virtual Environments
 __pycache__/
