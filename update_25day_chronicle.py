@@ -1,4 +1,11 @@
-# CUHK-X Kaggle Competition: VLM Neural-Symbolic Consensus Reasoning (NSCR)
+"""
+Update complete Kaggle repository documentation to capture the authentic 25-day engineering journey,
+from the humble 0.29284 initial starting baseline through relentless struggles and architectural breakthroughs
+all the way to the validated 0.77485 peak (+164.6% accuracy surge across 278 submissions).
+"""
+import subprocess
+
+readme_content = """# CUHK-X Kaggle Competition: VLM Neural-Symbolic Consensus Reasoning (NSCR)
 ### *A 25-Day AI Engineering Odyssey: Complete Research Architecture, Algorithmic Methodology, Overcoming Extreme Roadblocks, and Archival Log of All 278 Submissions*
 
 [![Organization: Runtime-Slayers](https://img.shields.io/badge/Org-Runtime--Slayers-red?style=flat-square)](https://github.com/Runtime-Slayers)
@@ -41,7 +48,7 @@ When initially evaluating early vision models on complex CUHK-X video routines, 
 After introducing early ensemble blending (`v20` to `v60`), evaluation progress stalled between **`0.50292` and `0.54093`**. Deep inspection revealed severe **Spatial Background Bleed-Over**. Self-attention mechanisms erroneously over-indexed on indoor ambient objects: athletes exercising in bedrooms or living rooms were systematically misclassified as performing sedentary actions like *'sleeping'*, *'watching tv'*, or *'sitting down'* simply due to surrounding furniture beds and couches.
 
 ### C. Roadblock III: The Overfitting Trap & Hard-Max Regressions (Days 13–19)
-In efforts to break through the 0.60 threshold, we constructed dense Random Forests, Markov Chain transitional routers, and Cross-Encoder anchor models (`v100` to `v240`). However, we faced severe validation instability and frustrating leaderboard drops—sometimes plunging back to **`0.48538`** during aggressive consolidation attempts. We learned a vital lesson: **forcing hard-max thresholding ($rg\max$) prematurely destroys low-confidence but accurate secondary human action transitions**.
+In efforts to break through the 0.60 threshold, we constructed dense Random Forests, Markov Chain transitional routers, and Cross-Encoder anchor models (`v100` to `v240`). However, we faced severe validation instability and frustrating leaderboard drops—sometimes plunging back to **`0.48538`** during aggressive consolidation attempts. We learned a vital lesson: **forcing hard-max thresholding ($\arg\max$) prematurely destroys low-confidence but accurate secondary human action transitions**.
 
 ### D. Roadblock IV: Production Discipline & SRE Rollback Recovery (Days 20–25)
 During our final sprint beyond **`0.70000`**, we discovered that sibling prediction loops generated physically impossible contradictions (e.g., predicting an actor is simultaneously conducting aerobic squats while turning textbook pages). By building automated Site Reliability Engineering (SRE) fallback factories (`restore_077485_apex.py` & `rebuild_true_pipeline.py`), we learned to defend verified high-water baselines against speculative regression under intense competition deadlines, ultimately establishing our absolute peak at **`0.77485`**.
@@ -71,21 +78,21 @@ To overcome deep neural network hallucinations without requiring prohibitive GPU
 ```
 
 ### Layer 1: Multi-Modal Probability Tensor Ingestion
-Instead of accepting brittle hard-max predictions ($rg\max$), our inference engine (`rebuild_true_pipeline.py`) ingests raw continuous softmax probability distributions across ensemble vision architectures (`transformer_fixed_raw_predictions.csv`). Every candidate choice retains an un-truncated confidence score $p_k \in [0.0, 1.0]$.
+Instead of accepting brittle hard-max predictions ($\arg\max$), our inference engine (`rebuild_true_pipeline.py`) ingests raw continuous softmax probability distributions across ensemble vision architectures (`transformer_fixed_raw_predictions.csv`). Every candidate choice retains an un-truncated confidence score $p_k \in [0.0, 1.0]$.
 
 ### Layer 2: Cross-Category Consensus Grid (MCCG)
 For every test video sequence $V_i$, we map all candidate actions across `single`, `multi`, `sequence`, and `combination` tracks into a verified vocabulary superset:
-$$U(V_i) = igcup_{c \in \{	ext{single}, 	ext{multi}, 	ext{sequence}, 	ext{combination}\}} 	ext{Vocabulary}(V_i, c)$$
+$$U(V_i) = \bigcup_{c \in \{\text{single}, \text{multi}, \text{sequence}, \text{combination}\}} \text{Vocabulary}(V_i, c)$$
 
 Any candidate atom within a multi-choice string (e.g., option letter B inside `BD`) that fails to achieve corroboration in $U(V_i)$ and exhibits lukewarm softmax confidence ($p < 0.68$) is mathematically diagnosed as a **spatial attention hallucination** and surgically pruned.
 
 ### Layer 3: Empirical Co-Occurrence & Mutual Exclusion Discovery
 By computationally analyzing **4,351+ verified human training video sequences** (`training_qa.csv`), our mining suite (`mine_v*.py`) established absolute physiological kinematic bounds on human motion:
 
-$$	ext{Law I: Aerobic vs. Sedentary Implausibility} \implies P(a \in \mathcal{A}_{	ext{aerobic}}, b \in \mathcal{S}_{	ext{sedentary}}) = 0.00$$
-* **Aerobic Action Universe ($\mathcal{A}$):** $\{	ext{squats}, 	ext{lunges}, 	ext{jumping jacks}, 	ext{running}, 	ext{undressing}, 	ext{stretching}\}$
-* **Sedentary Action Universe ($\mathcal{S}$):** $\{	ext{reading}, 	ext{writing}, 	ext{typing on a keyboard}, 	ext{turning a page}, 	ext{using a phone}\}$
-* **Culinary / Dining Routine Set ($\mathcal{C}$):** $\{	ext{peeling fruit}, 	ext{grabbing utensils}, 	ext{eating}, 	ext{drinking}, 	ext{pouring}, 	ext{washing dishes}\}$
+$$\text{Law I: Aerobic vs. Sedentary Implausibility} \implies P(a \in \mathcal{A}_{\text{aerobic}}, b \in \mathcal{S}_{\text{sedentary}}) = 0.00$$
+* **Aerobic Action Universe ($\mathcal{A}$):** $\{\text{squats}, \text{lunges}, \text{jumping jacks}, \text{running}, \text{undressing}, \text{stretching}\}$
+* **Sedentary Action Universe ($\mathcal{S}$):** $\{\text{reading}, \text{writing}, \text{typing on a keyboard}, \text{turning a page}, \text{using a phone}\}$
+* **Culinary / Dining Routine Set ($\mathcal{C}$):** $\{\text{peeling fruit}, \text{grabbing utensils}, \text{eating}, \text{drinking}, \text{pouring}, \text{washing dishes}\}$
 
 Whenever neural models predict physically incompatible action blends, our symbolic engine interrupts the network tensor, truncates the incompatible option, and restores kinematic continuity.
 
@@ -197,3 +204,33 @@ This repository was explicitly structured to demonstrate the profound technical 
 ---
 ### *Authored by R99D7 | Organized under Runtime-Slayers*
 *Architected for top-tier Applied AI Engineering, Machine Learning Research, and Enterprise Systems Engineering placements.*
+"""
+
+with open("README.md", "w", encoding="utf-8") as f:
+    f.write(readme_content)
+print("Successfully authored comprehensive publication-grade README.md featuring the 25-day journey from 0.29284 to 0.77485!")
+
+def run_git(args, ignore_err=False):
+    res = subprocess.run(["git"] + args, capture_output=True, text=True)
+    if not ignore_err and res.returncode != 0:
+        print(f"[GIT ERROR] {' '.join(args[:3])} -> {res.stderr.strip()}")
+    return res.returncode, (res.stdout + "\n" + res.stderr).strip()
+
+print("\n--- STAGING 25-DAY ODYSSEY DOCUMENTATION UPDATE ---")
+run_git(["add", "README.md", "update_25day_chronicle.py"])
+
+commit_msg = "docs(chronicle): author comprehensive 25-day engineering odyssey from 0.29284 initial baseline to 0.77485 peak\n\n- Detail rigorous 25-day evolutionary journey overcoming spatial background bleed-over and initial model collapses (+164.6% accuracy surge).\n- Present formal taxonomy of roadblocks surmounted: overfitting plateau, hard-max regressions, and kinematic contradictions.\n- Archive complete 278-submission experimental record demonstrating authentic scientific method and SRE DevOps resilience for enterprise ML portfolios."
+
+code, out = run_git(["commit", "-m", commit_msg], ignore_err=True)
+print("Commit outcome:", out)
+
+print("\n--- PUSHING 25-DAY ODYSSEY TO DUAL GITHUB REMOTES ---")
+res1 = subprocess.run(["git", "push", "runtime-slayers", "main"], capture_output=True, text=True)
+print("Runtime-Slayers Org push:", res1.returncode == 0)
+if res1.returncode != 0: print("Org out:", res1.stderr.strip())
+
+res2 = subprocess.run(["git", "push", "personal", "main"], capture_output=True, text=True)
+print("Personal developer push:", res2.returncode == 0)
+if res2.returncode != 0: print("Personal out:", res2.stderr.strip())
+
+print("\n=== COMPLETE 25-DAY ENGINEERING ODYSSEY PUBLISHED TO REPOSITORIES! ===")
